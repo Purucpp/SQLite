@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:layout_width="match_parent"
+
+    android:layout_height="match_parent"
+
+    android:paddingBottom="10dp"
+
+    android:paddingLeft="10dp"
+
+    android:paddingRight="10dp"
+
+    android:paddingTop="10dp"
+
+    tools:context="com.yesandroid.sqlite.MainActivity"
+
+    android:orientation="vertical">
+
+    ​
+
+<EditText
+
+    android:id="@+id/idName"
+
+    android:layout_width="match_parent"
+
+    android:layout_height="wrap_content"
+
+    android:hint="NAME" />
+
+    ​
+
+<EditText
+
+    android:id="@+id/idSurname"
+
+    android:layout_width="match_parent"
+
+    android:layout_height="wrap_content"
+
+    android:hint="SURNAME" />
+
+    ​
+
+<EditText
+
+    android:id="@+id/idMarks"
+
+    android:layout_width="match_parent"
+
+    android:layout_height="wrap_content"
+
+    android:inputType="number"
+
+    android:hint="MARKS" />
+
+<Button
+
+    android:id="@+id/idBtn"
+
+    android:layout_width="match_parent"
+
+    android:layout_height="wrap_content"
+
+    android:text="INSERT" />
+
+    </LinearLayout>
