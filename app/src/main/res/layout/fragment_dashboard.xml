@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/tp"
+    tools:context=".ui.dashboard.DashboardFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tablayout"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+
+            android:background="@color/white"
+            app:tabIndicatorColor="@color/teal_200"
+            app:tabIndicatorHeight="3dp"
+            android:layout_margin="0dp"
+            app:tabTextColor="@color/teal_700"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark"
+            tools:ignore="MissingConstraints">
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/firstItem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:icon="@drawable/ic_dashboard_black_24dp"
+
+                android:text="Cricket" />
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/secondItem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:icon="@drawable/ic_home_black_24dp"
+
+
+                android:text="Fruit_Ninja" />
+
+
+
+
+
+        </com.google.android.material.tabs.TabLayout>
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+
+
+            android:layout_marginTop="1dp"
+        />
+
+    </LinearLayout>
+
+
+
+
+
+</RelativeLayout>
