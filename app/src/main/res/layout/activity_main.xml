@@ -1,72 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-
     android:layout_width="match_parent"
-
     android:layout_height="match_parent"
+    tools:context=".MainActivity">
 
-    android:paddingBottom="10dp"
+    <Button
+        android:id="@+id/btnButtonSheet"
+        android:text="Camera"
+        android:onClick="openb"
+        android:textColor="#1e1e1e"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints,OnClick" />
 
-    android:paddingLeft="10dp"
+    <!-- Adding bottom sheet after main content -->
 
-    android:paddingRight="10dp"
-
-    android:paddingTop="10dp"
-
-    tools:context="com.yesandroid.sqlite.MainActivity"
-
-    android:orientation="vertical">
-
-    ​
-
-<EditText
-
-    android:id="@+id/idName"
-
-    android:layout_width="match_parent"
-
-    android:layout_height="wrap_content"
-
-    android:hint="NAME" />
-
-    ​
-
-<EditText
-
-    android:id="@+id/idSurname"
-
-    android:layout_width="match_parent"
-
-    android:layout_height="wrap_content"
-
-    android:hint="SURNAME" />
-
-    ​
-
-<EditText
-
-    android:id="@+id/idMarks"
-
-    android:layout_width="match_parent"
-
-    android:layout_height="wrap_content"
-
-    android:inputType="number"
-
-    android:hint="MARKS" />
-
-<Button
-
-    android:id="@+id/idBtn"
-
-    android:layout_width="match_parent"
-
-    android:layout_height="wrap_content"
-
-    android:text="INSERT" />
-
-    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

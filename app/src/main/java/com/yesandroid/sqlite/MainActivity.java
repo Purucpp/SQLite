@@ -1,62 +1,46 @@
 package com.yesandroid.sqlite;
 
+import android.os.Bundle;
+import android.view.View;
+
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.os.Bundle;
-        import android.view.View;
-        import android.widget.Button;
-        import android.widget.EditText;
-        import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
-    DataBaseHelper myDb;
-    EditText txtName, txtSurName, txtMarks;
-    Button btnClick;
+
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_main);
 
-        myDb = new DataBaseHelper(this);
-        txtName =  findViewById(R.id.idName);
+        //final Dialog dialog = new Dialog(this);
 
-        txtSurName =  findViewById(R.id.idSurname);
+        /*
+        Dialog dialog = new Dialog(this);
+        WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+        lp.copyFrom(dialog.getWindow().getAttributes());
+        lp.width = WindowManager.LayoutParams.MATCH_PARENT;
+        lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
+        lp.gravity = Gravity.BOTTOM;
+        lp.windowAnimations = R.style.DialogAnimation;
+        dialog.getWindow().setAttributes(lp);
 
-        txtMarks =  findViewById(R.id.idMarks);
+        */
 
-        btnClick = findViewById(R.id.idBtn);
 
-        btnClick.setOnClickListener(new View.OnClickListener() {
 
-            @Override
 
-            public void onClick(View v) {
+       // Dialog dialog = new Dialog(new ContextThemeWrapper(this, R.style.DialogSlideAnim));
 
-                ClickMe();
-
-            }
-
-        });
-
+      //  getWindow().setBackgroundDrawableResource(android.R.color.background_dark);
     }
 
-    private void ClickMe() {
-        String name = txtName.getText().toString();
-        String surname = txtSurName.getText().toString();
-        String marks = txtMarks.getText().toString();
-        Boolean result = myDb.insertData(name, surname, marks);
-        if (result == true) {
-
-            Toast.makeText(this, "Data Inserted Successfully", Toast.LENGTH_SHORT).show();
-
-        } else {
-
-            Toast.makeText(this, "Data Insertion Failed", Toast.LENGTH_SHORT).show();
-
-        }
+    public void openb(View v)
+    {
+        ButtomSheet bt=new ButtomSheet();
+        bt.show(getSupportFragmentManager(),"example");
 
     }
-
 }
-
