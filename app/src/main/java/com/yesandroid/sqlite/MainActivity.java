@@ -1,78 +1,85 @@
 package com.yesandroid.sqlite;
 
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.TextView;
+import android.view.MenuItem;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
-import java.util.ArrayList;
+import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.tabs.TabItem;
+import com.google.android.material.tabs.TabLayout;
 
-public class MainActivity extends AppCompatActivity {
-
-    ArrayList<String> selectedItems;
+public class MainActivity extends AppCompatActivity implements  NavigationView.OnNavigationItemSelectedListener{
+    DrawerLayout drawerLayout;
+    ActionBarDrawerToggle toggle;
+    NavigationView navigationView;
+    ViewPager pager;
+    TabLayout mTabLayout;
+    TabItem firstItem,secondItem,thirdItem;
+    PagerAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
-        selectedItems=new ArrayList<String>();
+        pager = findViewById(R.id.viewpager);
+        mTabLayout = findViewById(R.id.tablayout);
 
+        firstItem = findViewById(R.id.firstItem);
+        secondItem = findViewById(R.id.secondItem);
+        thirdItem = findViewById(R.id.thirditem);
 
-        ListView chl=(ListView) findViewById(R.id.checkable_list);
-        //set multiple selection mode
-        chl.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
-        String[] items={"English","Chinese","French","German","Italian","Khmer"};
-        //supply data itmes to ListView
-        ArrayAdapter<String> aa=new ArrayAdapter<String>(this,R.layout.checkable_list_layout,R.id.txt_title,items);
-        chl.setAdapter(aa);
-        //set OnItemClickListener
+        drawerLayout = findViewById(R.id.drawer);
+        navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
 
-        chl.setOnItemClickListener(new AdapterView.OnItemClickListener(){
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                // selected item
-                String selectedItem = ((TextView) view).getText().toString();
-                if(selectedItems.contains(selectedItem))
-                    selectedItems.remove(selectedItem); //remove deselected item from the list of selected items
-                else
-                    selectedItems.add(selectedItem); //add selected item to the list of selected items
+        toggle = new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.open,R.string.close);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.setDrawerIndicatorEnabled(true);
+        toggle.syncState();
+
+        adapter = new PagerAdapter(getSupportFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT,mTabLayout.getTabCount());
+        pager.setAdapter(adapter);
+
+        mTabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                pager.setCurrentItem(tab.getPosition());
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
 
             }
 
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
         });
 
+        pager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(mTabLayout));
+
 
     }
 
-
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        getMenuInflater().inflate(R.menu.main, menu);
-//        return true;
-//    }
-
-
-//    public void onStart()
-//    {
-//        super.onStart();
-//        //create an instance of ListView
-//
-//    }
-
-    public void showSelectedItems(View view){
-        String selItems="";
-        for(String item:selectedItems){
-            if(selItems=="")
-                selItems=item;
-            else
-                selItems+="/"+item;
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        drawerLayout.closeDrawer(GravityCompat.START);
+        if(item.getItemId() == R.id.menuTab){
+            Toast.makeText(this, "Btn is clicked.", Toast.LENGTH_SHORT).show();
         }
-        Toast.makeText(this, selItems, Toast.LENGTH_LONG).show();
+        return false;
     }
-
 }
