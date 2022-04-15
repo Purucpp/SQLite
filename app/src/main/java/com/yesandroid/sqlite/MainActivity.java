@@ -63,6 +63,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     ds.receive(dp);
 
                     Log.d("msg", Arrays.toString(msg));
+                    Log.d("msg", (msg[1] & 0xff)+"");
                     stringData = new String(msg, 0, dp.getLength());
                     updateUI(stringData);
 
