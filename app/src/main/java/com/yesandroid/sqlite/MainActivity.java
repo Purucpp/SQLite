@@ -95,7 +95,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     DatagramPacket dp;
 
                     byte[] dataTosend = new byte[6021];
-                    dataTosend[0] = 64;
+                    dataTosend[0] = 54;
                     dataTosend[1] = (byte) 255;
                     dataTosend[2] = (byte) results[0]; //fhr
                     dataTosend[3] = (byte) results[1]; // Mhr
@@ -105,7 +105,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         dataTosend[i]=(byte) 0;
                     } */
 
-                    dp = new DatagramPacket(dataTosend, dataTosend.length, serverAddr, 9001);
+                    dp = new DatagramPacket(dataTosend, dataTosend.length, serverAddr, 1234);
                     ds.send(dp);
 
                     byte[] lMsg = new byte[1000];
