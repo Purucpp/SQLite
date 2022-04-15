@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        results = new double[]{1, 2, 3, 4, 5, 6, 7, 8};
+        results = new double[]{150, 80, 50, 0, 5, 6, 7, 8};
         Button buttonSend = (Button) findViewById(R.id.btn_send);
 
         mEditTextSendMessage = (EditText) findViewById(R.id.edt_send_message);
@@ -97,9 +97,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     byte[] dataTosend = new byte[6021];
                     dataTosend[0] = 54;
                     dataTosend[1] = (byte) 255;
-                    dataTosend[2] = (byte) results[0]; //fhr
-                    dataTosend[3] = (byte) results[1]; // Mhr
+                    dataTosend[2] = (byte) results[0]; // fhr
+                    dataTosend[3] = (byte) results[1]; // mhr
                     dataTosend[4] = (byte) results[2]; // uc plot
+                    dataTosend[5] = (byte) results[3]; // uc count
                   /*  for(int i=5;i<6021;i++)
                     {
                         dataTosend[i]=(byte) 0;
