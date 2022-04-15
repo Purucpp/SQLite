@@ -1,6 +1,7 @@
 package com.yesandroid.sqlite;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -52,6 +53,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void run() {
 
+              //  Log.d("thread","therad");
                 byte[] msg = new byte[1000];
                 DatagramPacket dp = new DatagramPacket(msg, msg.length);
                 DatagramSocket ds = null;
@@ -66,6 +68,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     String msgToSender = "Bye Bye ";
                     dp = new DatagramPacket(msgToSender.getBytes(), msgToSender.length(), dp.getAddress(), dp.getPort());
                     ds.send(dp);
+                    startServerSocket();
 
                 } catch (IOException e) {
                     e.printStackTrace();
