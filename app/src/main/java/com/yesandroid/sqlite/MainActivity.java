@@ -36,12 +36,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private TextView mTextViewReplyFromServer;
     private EditText mEditTextSendMessage;
     private String ipAddress;
+    protected double[] results;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        results = new double[]{1, 2, 3, 4, 5, 6, 7, 8};
         Button buttonSend = (Button) findViewById(R.id.btn_send);
 
         mEditTextSendMessage = (EditText) findViewById(R.id.edt_send_message);
@@ -91,7 +93,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     // IP Address below is the IP address of that Device where server socket is opened.
                     InetAddress serverAddr = InetAddress.getByName(ipAddress);
                     DatagramPacket dp;
-                    dp = new DatagramPacket(message.getBytes(), message.length(), serverAddr, 9001);
+
+                    byte[] dataTosend = new byte[10];
+                    dataTosend[0] = 64;
+                    dataTosend[1] = (byte) 255;
+                    dataTosend[2] = (byte) results[0]; //fhr
+                    dataTosend[3] = (byte) results[1]; // Mhr
+                    dataTosend[4] = (byte) results[2]; // uc plot
+
+                    dp = new DatagramPacket(dataTosend, dataTosend.length, serverAddr, 9001);
                     ds.send(dp);
 
                     byte[] lMsg = new byte[1000];
