@@ -19,7 +19,7 @@ import android.os.Bundle;
         import java.io.IOException;
         import java.net.DatagramPacket;
         import java.net.DatagramSocket;
-
+import java.util.Arrays;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void run() {
 
               //  Log.d("thread","therad");
-                byte[] msg = new byte[1000];
+                byte[] msg = new byte[5];
                 DatagramPacket dp = new DatagramPacket(msg, msg.length);
                 DatagramSocket ds = null;
                 try {
@@ -62,6 +62,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     //ds.setSoTimeout(50000);
                     ds.receive(dp);
 
+                    Log.d("msg", Arrays.toString(msg));
                     stringData = new String(msg, 0, dp.getLength());
                     updateUI(stringData);
 
