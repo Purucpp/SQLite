@@ -1,6 +1,11 @@
 package com.yesandroid.sqlite;
 
+import android.net.DhcpInfo;
+import android.net.wifi.WifiInfo;
+import android.net.wifi.WifiManager;
 import android.os.Bundle;
+import android.text.format.Formatter;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -17,6 +22,9 @@ import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
+import java.net.NetworkInterface;
+import java.net.SocketException;
+import java.util.Enumeration;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -27,6 +35,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private TextView mTextViewReplyFromServer;
     private EditText mEditTextSendMessage;
+    private String ipAddress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +46,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         mEditTextSendMessage = (EditText) findViewById(R.id.edt_send_message);
         mTextViewReplyFromServer = (TextView) findViewById(R.id.tv_reply_from_server);
+
+
+        WifiManager wifiMgr = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
+        DhcpInfo dhcpInfo=wifiMgr.getDhcpInfo();
+       // Log.d("test",Formatter.formatIpAddress(dhcpInfo.gateway));
+        ipAddress=Formatter.formatIpAddress(dhcpInfo.gateway);
+
+
+
+//        WifiInfo wifiInfo = wifiMgr.getConnectionInfo();
+//        int ip = wifiInfo.getIpAddress();
+//        String ipAddress = Formatter.formatIpAddress(ip);
+
+     //   Log.d("address",ipAddress);
 
         buttonSend.setOnClickListener(this);
     }
@@ -66,7 +89,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 try {
                     ds = new DatagramSocket();
                     // IP Address below is the IP address of that Device where server socket is opened.
-                    InetAddress serverAddr = InetAddress.getByName("xxx.xxx.xxx.xxx");
+                    InetAddress serverAddr = InetAddress.getByName(ipAddress);
                     DatagramPacket dp;
                     dp = new DatagramPacket(message.getBytes(), message.length(), serverAddr, 9001);
                     ds.send(dp);
@@ -99,4 +122,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         thread.start();
     }
+
+
 }
