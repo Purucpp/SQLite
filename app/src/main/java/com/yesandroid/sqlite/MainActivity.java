@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void run() {
 
               //  Log.d("thread","therad");
-                byte[] msg = new byte[5];
+                byte[] msg = new byte[6021];
                 DatagramPacket dp = new DatagramPacket(msg, msg.length);
                 DatagramSocket ds = null;
                 try {
