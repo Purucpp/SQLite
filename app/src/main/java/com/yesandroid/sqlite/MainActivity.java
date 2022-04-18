@@ -94,19 +94,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     InetAddress serverAddr = InetAddress.getByName(ipAddress);
                     DatagramPacket dp;
 
-                    byte[] dataTosend = new byte[6021];
+                 /*   byte[] dataTosend = new byte[6021];
                     dataTosend[0] = 54;
                     dataTosend[1] = (byte) 255;
                     dataTosend[2] = (byte) results[0]; // fhr
                     dataTosend[3] = (byte) results[1]; // mhr
                     dataTosend[4] = (byte) results[2]; // uc plot
-                    dataTosend[5] = (byte) results[3]; // uc count
+                    dataTosend[5] = (byte) results[3]; // uc count */
+
+
                   /*  for(int i=5;i<6021;i++)
                     {
                         dataTosend[i]=(byte) 0;
                     } */
 
-                    dp = new DatagramPacket(dataTosend, dataTosend.length, serverAddr, 1234);
+                    dp = new DatagramPacket(message.getBytes(), message.length(), serverAddr, 9001);
                     ds.send(dp);
 
                     byte[] lMsg = new byte[1000];
