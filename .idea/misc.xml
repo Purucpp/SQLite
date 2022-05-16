@@ -6,8 +6,10 @@
         <entry key="app/src/main/res/font/jj.xml" value="0.28703703703703703" />
         <entry key="app/src/main/res/layout/activity_delete.xml" value="0.26721014492753625" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.26721014492753625" />
+        <entry key="app/src/main/res/layout/activity_new_course.xml" value="0.14361702127659576" />
         <entry key="app/src/main/res/layout/activity_read.xml" value="0.26721014492753625" />
         <entry key="app/src/main/res/layout/bottom_sheet.xml" value="0.26132246376811596" />
+        <entry key="app/src/main/res/layout/course_rv_item.xml" value="0.14361702127659576" />
       </map>
     </option>
   </component>
