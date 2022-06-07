@@ -2,14 +2,17 @@ package com.yesandroid.sqlite.data.movie.source.local.dao;
 
 
 import androidx.room.Dao;
+import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
+import androidx.room.Query;
+import androidx.room.Update;
 
 import com.yesandroid.sqlite.data.movie.Movie;
 
 import java.util.List;
 
-import retrofit2.http.Query;
+
 
 /**
  * Created by Ali Asadi on 30/01/2019.
