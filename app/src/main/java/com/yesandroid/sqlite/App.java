@@ -6,6 +6,7 @@ import android.util.Log;
 
 /**
  * Created by Ali Asadi on 10/03/2018.
+ * https://stackoverflow.com/questions/2002288/static-way-to-get-context-in-android
  */
 public class App extends Application {
 
