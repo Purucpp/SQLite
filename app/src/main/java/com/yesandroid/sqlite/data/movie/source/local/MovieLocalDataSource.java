@@ -4,10 +4,6 @@ import com.yesandroid.sqlite.data.movie.Movie;
 import com.yesandroid.sqlite.data.movie.source.MovieDataSource;
 import com.yesandroid.sqlite.data.movie.source.local.dao.MovieDao;
 import com.yesandroid.sqlite.utils.DiskExecutor;
-import com.yesandroid.sqlite.data.movie.Movie;
-import com.yesandroid.sqlite.data.movie.source.MovieDataSource;
-import com.yesandroid.sqlite.data.movie.source.local.dao.MovieDao;
-import com.yesandroid.sqlite.utils.DiskExecutor;
 
 import java.util.List;
 import java.util.concurrent.Executor;

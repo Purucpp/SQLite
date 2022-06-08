@@ -1,18 +1,13 @@
 package com.yesandroid.sqlite.data.movie.source.local.dao;
 
-
-import androidx.room.Dao;
-import androidx.room.Delete;
-import androidx.room.Insert;
-import androidx.room.OnConflictStrategy;
-import androidx.room.Query;
-import androidx.room.Update;
+import android.arch.persistence.room.Dao;
+import android.arch.persistence.room.Insert;
+import android.arch.persistence.room.OnConflictStrategy;
+import android.arch.persistence.room.Query;
 
 import com.yesandroid.sqlite.data.movie.Movie;
 
 import java.util.List;
-
-
 
 /**
  * Created by Ali Asadi on 30/01/2019.
@@ -40,4 +35,3 @@ public interface MovieDao {
     @Query("DELETE FROM movies")
     void deleteMovies();
 }
-

@@ -22,7 +22,7 @@ public class MoviesRepository implements MovieDataSource {
                              MovieLocalDataSource movieLocal,
                              MovieCacheDataSource movieCache) {
 
-        this.movieRemote = (MovieDataSource) movieRemote;
+        this.movieRemote = movieRemote;
         this.movieLocal = movieLocal;
         this.movieCache = movieCache;
     }

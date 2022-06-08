@@ -14,6 +14,8 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
         init(this);
+
+
     }
 
     private static void init(App app) {

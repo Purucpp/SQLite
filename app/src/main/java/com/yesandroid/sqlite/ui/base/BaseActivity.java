@@ -1,10 +1,8 @@
 package com.yesandroid.sqlite.ui.base;
 
 import android.os.Bundle;
-
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
+import android.support.annotation.NonNull;
+import android.support.v7.app.AppCompatActivity;
 
 /**
  * Created by Ali Asadi on 26/03/2018.
@@ -12,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public abstract class BaseActivity<Presenter extends BasePresenter> extends AppCompatActivity {
 
     protected Presenter presenter;
+
 
     @NonNull
     protected abstract Presenter createPresenter();

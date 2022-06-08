@@ -3,12 +3,10 @@ package com.yesandroid.sqlite.ui.details;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-
+import android.support.annotation.NonNull;
+import android.support.v7.widget.AppCompatImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.widget.AppCompatImageView;
 
 import com.yesandroid.sqlite.R;
 import com.yesandroid.sqlite.data.movie.Movie;
@@ -26,8 +24,7 @@ public class DetailsActivity extends BaseActivity<DetailsPresenter> implements D
 
     private static final String EXTRA_MOVIE = "EXTRA_MOVIE";
 
-    @BindView(R.id.image)
-    AppCompatImageView image;
+    @BindView(R.id.image) AppCompatImageView image;
     @BindView(R.id.title) TextView title;
     @BindView(R.id.desc) TextView desc;
 
@@ -36,6 +33,7 @@ public class DetailsActivity extends BaseActivity<DetailsPresenter> implements D
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
         ButterKnife.bind(this);
+
 
         presenter.onAttach();
     }

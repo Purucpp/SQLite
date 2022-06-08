@@ -1,11 +1,9 @@
 package com.yesandroid.sqlite.ui.main;
 
 import android.os.Bundle;
-
+import android.support.annotation.NonNull;
+import android.support.v7.widget.RecyclerView;
 import android.widget.Toast;
-
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.yesandroid.sqlite.R;
 import com.yesandroid.sqlite.data.DataManager;
@@ -27,8 +25,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainVie
 
     private MovieAdapter movieAdapter;
 
-    @BindView(R.id.recycler_view)
-    RecyclerView recyclerView;
+    @BindView(R.id.recycler_view) RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +36,6 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainVie
         recyclerView.setAdapter(movieAdapter);
         presenter.onAttach();
     }
-
 
     @NonNull
     @Override
