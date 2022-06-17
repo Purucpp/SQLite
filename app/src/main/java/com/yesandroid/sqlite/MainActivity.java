@@ -20,9 +20,11 @@ import android.os.Bundle;
         import java.net.DatagramPacket;
         import java.net.DatagramSocket;
 import java.util.Arrays;
+import java.util.Date;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+   public String parentFolder;
 
     final Handler handler = new Handler();
 
@@ -58,11 +60,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 DatagramPacket dp = new DatagramPacket(msg, msg.length);
                 DatagramSocket ds = null;
                 try {
-                    ds = new DatagramSocket(9001);
+                    ds = new DatagramSocket(1234);
                     //ds.setSoTimeout(50000);
                     ds.receive(dp);
 
+                    Logging.appendLog(byteArrayToHex(msg),parentFolder);
+
                     Log.d("msg", Arrays.toString(msg));
+
                     Log.d("msg", (msg[1] & 0xff)+"");
                     stringData = new String(msg, 0, dp.getLength());
                     updateUI(stringData);
@@ -105,6 +110,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             case R.id.btn_start_receiving:
 
+                parentFolder=java.text.DateFormat.getDateTimeInstance().format(new Date());
                 startServerSocket();
 
                 buttonStartReceiving.setEnabled(false);
@@ -119,5 +125,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 buttonStopReceiving.setEnabled(false);
                 break;
         }
+    }
+
+    public static String byteArrayToHex(byte[] a) {
+        StringBuilder sb = new StringBuilder(a.length * 2);
+
+        for(byte b: a) {
+            sb.append(String.format("%02x", b));
+        }
+        return sb.toString();
     }
 }
