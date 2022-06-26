@@ -71,6 +71,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     Log.d("msg", (msg[1] & 0xff)+"");
                     stringData = new String(msg, 0, dp.getLength());
                     updateUI(stringData);
+                   // update(msg);
 
                     String msgToSender = "Bye Bye ";
                     dp = new DatagramPacket(msgToSender.getBytes(), msgToSender.length(), dp.getAddress(), dp.getPort());
@@ -88,6 +89,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         });
         thread.start();
+    }
+
+    private void update(byte[] b)
+    {
+        handler.post(new Runnable() {
+            @Override
+            public void run() {
+
+
+                if (b.length != 0)
+                    textViewDataFromClient.setText( "\n" + "From Client : " + byteArrayToHex(b));
+            }
+        });
     }
 
     private void updateUI(final String stringData) {
