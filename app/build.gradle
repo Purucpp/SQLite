@@ -1,6 +1,10 @@
 plugins {
     id 'com.android.application'
+
 }
+
+
+
 
 android {
     compileSdkVersion 30
@@ -25,6 +29,12 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    tasks.withType(JavaCompile) {
+        configure(options) {
+            options.compilerArgs << "-Adagger.hilt.disableModulesHaveInstallInCheck=true"
+        }
     }
 }
 

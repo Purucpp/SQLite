@@ -40,6 +40,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         // Here we are binding dagger to our application
         // Dagger keyword will be prefix to the component name
+
+
         sharedPreferenceComponent = DaggerSharedPreferenceComponent.builder().sharedPreferenceModule(
                 new SharedPreferenceModule(this)).build();
 

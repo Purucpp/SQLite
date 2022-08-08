@@ -7,9 +7,11 @@ import javax.inject.Singleton;
 import dagger.Module;
 import dagger.Provides;
 
+
 // @Module annotation is used over the class that
 // creates construct object and provides dependencies
 @Module
+
 public class SharedPreferenceModule {
     private Context context;
 
