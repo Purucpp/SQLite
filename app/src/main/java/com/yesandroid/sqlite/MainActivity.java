@@ -1,6 +1,7 @@
 package com.yesandroid.sqlite;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -39,8 +40,12 @@ public class MainActivity extends AppCompatActivity {
 
     public void openb(View v)
     {
-        ButtomSheet bt=new ButtomSheet();
-        bt.show(getSupportFragmentManager(),"example");
+//        ButtomSheet bt=new ButtomSheet();
+//        bt.show(getSupportFragmentManager(),"example");
+       // throw new RuntimeException("Test Crash"); // Force a crash
+        String s=getIntent().getStringExtra("test");
+        Log.d("test",s);
+
 
     }
 }

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "741545216350",
+    "project_id": "sq-lite-8f03a",
+    "storage_bucket": "sq-lite-8f03a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:741545216350:android:944ac83d4785c1b196a7cf",
+        "android_client_info": {
+          "package_name": "com.yesandroid.sqlite"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "741545216350-jp704oo86ofi6t5m18b298tjntv82rnc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCjQeo9_M7PEwzp86JH5i1d1vjkVYfxD3E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "741545216350-jp704oo86ofi6t5m18b298tjntv82rnc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
