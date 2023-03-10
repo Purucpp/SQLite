@@ -1,5 +1,6 @@
 package com.yesandroid.sqlite;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 
@@ -30,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
         */
 
 
+       Context context= MyApplication.getAppContext();
 
 
        // Dialog dialog = new Dialog(new ContextThemeWrapper(this, R.style.DialogSlideAnim));
