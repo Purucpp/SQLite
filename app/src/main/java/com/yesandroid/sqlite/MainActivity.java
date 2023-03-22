@@ -1,46 +1,45 @@
 package com.yesandroid.sqlite;
 
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
+import com.yesandroid.sqlite.databinding.ActivityMainBinding;
+
 
 public class MainActivity extends AppCompatActivity {
-
-
-
+    // calling binding class for activity_main.xml
+    // which is generated automatically.
+    ActivityMainBinding activityMainBinding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        //final Dialog dialog = new Dialog(this);
-
-        /*
-        Dialog dialog = new Dialog(this);
-        WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
-        lp.copyFrom(dialog.getWindow().getAttributes());
-        lp.width = WindowManager.LayoutParams.MATCH_PARENT;
-        lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
-        lp.gravity = Gravity.BOTTOM;
-        lp.windowAnimations = R.style.DialogAnimation;
-        dialog.getWindow().setAttributes(lp);
-
-        */
 
 
+        // inflating our xml layout in our activity main binding
+        activityMainBinding = ActivityMainBinding.inflate(getLayoutInflater());
 
+        // getting our root layout in our view.
+        View view = activityMainBinding.getRoot();
 
-       // Dialog dialog = new Dialog(new ContextThemeWrapper(this, R.style.DialogSlideAnim));
+        // below line is to set
+        // Content view for our layout.
+        setContentView(view);
 
-      //  getWindow().setBackgroundDrawableResource(android.R.color.background_dark);
-    }
-
-    public void openb(View v)
-    {
-//        ButtomSheet bt=new ButtomSheet();
-//        bt.show(getSupportFragmentManager(),"example");
-
+        // calling button and setting on click listener for our button.
+        // we have called our button with its id and set on click listener on it.
+        activityMainBinding.button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String str = activityMainBinding.editText.getText().toString();
+                if(str.isEmpty()) {
+                    Toast.makeText(getApplicationContext(), "Please enter something", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getApplicationContext(), "You entered " + activityMainBinding.editText.getText().toString(), Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 }
