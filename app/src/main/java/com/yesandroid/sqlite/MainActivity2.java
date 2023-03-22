@@ -11,10 +11,15 @@ public class MainActivity2 extends BaseActivity<ViewModel, ActivityMain2Binding>
         return R.layout.activity_main2;
     }
 
-    public int getViewModel() {
-        return BR.loginViewModel;
+    @Override
+    protected Class<ViewModel> getViewModel() {
+        return null;
     }
 
+    @Override
+    protected ActivityMain2Binding getViewBinding() {
+        return null;
+    }
 
 
     @Override
