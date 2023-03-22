@@ -6,8 +6,8 @@ xmlns:tools="http://schemas.android.com/tools">
 <data>
 
     <variable
-        name="loginViewModel"
-        type="com.yesandroid.sqlite.ViewModel" />
+        name="firstViewModel"
+        type="com.yesandroid.sqlite.FirstViewModel" />
 </data>
 
 

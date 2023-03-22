@@ -20,7 +20,7 @@ public abstract class BaseActivity<V extends ViewModel, B extends ViewDataBindin
 
     protected abstract Class<V> getViewModel();
 
-    protected abstract B getViewBinding();
+   // protected abstract B getViewBinding();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -31,6 +31,7 @@ public abstract class BaseActivity<V extends ViewModel, B extends ViewDataBindin
     protected void init() {
         mBinding = DataBindingUtil.setContentView(this, getLayout());
         mViewModel = ViewModelProviders.of(this).get(getViewModel());
+        mBinding.executePendingBindings();
     }
 
 }
