@@ -2,6 +2,7 @@ package com.yesandroid.sqlite;
 
 
 import android.os.Bundle;
+import android.widget.Toast;
 
 import androidx.annotation.LayoutRes;
 import androidx.annotation.Nullable;
@@ -22,16 +23,30 @@ public abstract class BaseActivity<V extends ViewModel, B extends ViewDataBindin
 
    // protected abstract B getViewBinding();
 
+    protected abstract void init(Bundle savedInstanceState);
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        init();
-    }
-
-    protected void init() {
+       // init();
         mBinding = DataBindingUtil.setContentView(this, getLayout());
         mViewModel = ViewModelProviders.of(this).get(getViewModel());
         mBinding.executePendingBindings();
+        init(savedInstanceState);
+    }
+
+
+    public B getViewDataBinding() {
+        return mBinding;
+    }
+
+    public V getmViewModel()
+    {
+        return mViewModel;
+    }
+
+    public void showToast(String message)
+    {
+        Toast.makeText(this, ""+message, Toast.LENGTH_SHORT).show();
     }
 
 }
