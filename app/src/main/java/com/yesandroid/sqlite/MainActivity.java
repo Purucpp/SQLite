@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.work.OneTimeWorkRequest;
+import androidx.work.WorkManager;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -14,6 +16,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
 
         //final Dialog dialog = new Dialog(this);
 
@@ -39,6 +43,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void openb(View v)
     {
+
+        WorkManager mWorkManager = WorkManager.getInstance();
+        OneTimeWorkRequest mRequest = new OneTimeWorkRequest.Builder(NotificationWorker.class).build();
+        mWorkManager.enqueue(mRequest);
 //        ButtomSheet bt=new ButtomSheet();
 //        bt.show(getSupportFragmentManager(),"example");
 
