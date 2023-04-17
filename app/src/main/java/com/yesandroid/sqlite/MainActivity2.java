@@ -14,6 +14,11 @@ public class MainActivity2 extends BaseActivity<FirstViewModel, ActivityMain2Bin
     }
 
     @Override
+    public int getViewModelId() {
+        return BR.firstViewModel;
+    }
+
+    @Override
     protected Class<FirstViewModel> getViewModel() {
         return FirstViewModel.class;
     }
@@ -21,13 +26,13 @@ public class MainActivity2 extends BaseActivity<FirstViewModel, ActivityMain2Bin
     @Override
     protected void init(Bundle savedInstanceState) {
 
-        getViewDataBinding().button.setOnClickListener(new View.OnClickListener() {
+     /*   getViewDataBinding().button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                // Toast.makeText(MainActivity2.this, ""+getViewDataBinding().editText.getText(), Toast.LENGTH_SHORT).show();
                 showToast(getViewDataBinding().editText.getText().toString());
             }
-        });
+        }); */
 
     }
 

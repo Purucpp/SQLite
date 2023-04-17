@@ -19,6 +19,7 @@ public abstract class BaseActivity<V extends ViewModel, B extends ViewDataBindin
     protected abstract @LayoutRes
     int getLayout();
 
+    public abstract int getViewModelId();
     protected abstract Class<V> getViewModel();
 
    // protected abstract B getViewBinding();
@@ -30,6 +31,7 @@ public abstract class BaseActivity<V extends ViewModel, B extends ViewDataBindin
        // init();
         mBinding = DataBindingUtil.setContentView(this, getLayout());
         mViewModel = ViewModelProviders.of(this).get(getViewModel());
+        mBinding.setVariable(getViewModelId(),mViewModel);
         mBinding.executePendingBindings();
         init(savedInstanceState);
     }
