@@ -1,10 +1,10 @@
-package com.yesandroid.sqlite;
+package com.yesandroid.sqlite.databinding;
 
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Toast;
 
-import com.yesandroid.sqlite.databinding.ActivityMain2Binding;
+import com.yesandroid.sqlite.BR;
+import com.yesandroid.sqlite.base.BaseActivity;
+import com.yesandroid.sqlite.R;
 
 public class MainActivity2 extends BaseActivity<FirstViewModel, ActivityMain2Binding> {
 
@@ -12,12 +12,10 @@ public class MainActivity2 extends BaseActivity<FirstViewModel, ActivityMain2Bin
     public int getLayout() {
         return R.layout.activity_main2;
     }
-
     @Override
     public int getViewModelId() {
         return BR.firstViewModel;
     }
-
     @Override
     protected Class<FirstViewModel> getViewModel() {
         return FirstViewModel.class;
@@ -36,14 +34,5 @@ public class MainActivity2 extends BaseActivity<FirstViewModel, ActivityMain2Bin
 
     }
 
-//    @Override
-//    protected ActivityMain2Binding getViewBinding() {
-//        return null;
-//    }
 
-
-//    @Override
-//    public void onPointerCaptureChanged(boolean hasCapture) {
-//        super.onPointerCaptureChanged(hasCapture);
-//    }
 }

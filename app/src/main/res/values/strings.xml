@@ -1,4 +1,3 @@
-
 <resources>
     <string name="app_name">SQ Lite</string>
     <string name="title_activity_login">LoginActivity</string>
@@ -21,7 +20,6 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 
 
-
     <!-- Break paragraphs without extra spacing, by putting \n at the beginning of next line.-->
     <string name="bio">Hi, my name is Aleks.
 \n\nI love fish.
@@ -37,6 +35,8 @@
     <string name="done">Done</string>
     <string name="yellow_star">Yellow star</string>
     <string name="name">Aleks Haecky</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>

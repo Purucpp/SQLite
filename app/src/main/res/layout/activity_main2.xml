@@ -7,7 +7,7 @@ xmlns:tools="http://schemas.android.com/tools">
 
     <variable
         name="firstViewModel"
-        type="com.yesandroid.sqlite.FirstViewModel" />
+        type="com.yesandroid.sqlite.databinding.FirstViewModel" />
 </data>
 
 
@@ -15,7 +15,7 @@ xmlns:tools="http://schemas.android.com/tools">
 
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MainActivity2"
+        tools:context=".databinding.MainActivity2"
         tools:ignore="HardcodedText">
 
         <EditText
@@ -40,6 +40,17 @@ xmlns:tools="http://schemas.android.com/tools">
             android:text="Button"
             app:layout_constraintEnd_toEndOf="@+id/editText"
             app:layout_constraintTop_toBottomOf="@+id/editText" />
+
+        <fragment
+            android:id="@+id/details_fragment"
+            android:name="com.yesandroid.sqlite.fragment.BlankFragment"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            app:layout_constraintEnd_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button"
+            tools:layout="@layout/fragment_blank" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

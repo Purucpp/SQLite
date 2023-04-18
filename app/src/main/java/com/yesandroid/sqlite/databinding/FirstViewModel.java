@@ -1,4 +1,4 @@
-package com.yesandroid.sqlite;
+package com.yesandroid.sqlite.databinding;
 
 import android.app.Application;
 import android.content.Context;
@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.databinding.ObservableField;
 import androidx.lifecycle.AndroidViewModel;
 
+import com.yesandroid.sqlite.MainActivity;
 
 
 public class FirstViewModel extends AndroidViewModel {
@@ -27,7 +28,7 @@ public class FirstViewModel extends AndroidViewModel {
         Log.d("tk","tk");
         Toast.makeText(context, "Testing"+email.get(), Toast.LENGTH_SHORT).show();
 
-        Intent intent=new Intent(context,MainActivity.class);
+        Intent intent=new Intent(context, MainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(intent);
 

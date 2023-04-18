@@ -1,4 +1,4 @@
-package com.yesandroid.sqlite;
+package com.yesandroid.sqlite.base;
 
 
 import android.os.Bundle;
