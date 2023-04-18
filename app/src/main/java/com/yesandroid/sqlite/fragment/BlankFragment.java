@@ -30,10 +30,10 @@ public class BlankFragment extends BaseFragment<BlankFragmentViewModel, Fragment
         return BR.fragmentblankviewmodel;
     }
 
-    @Override
-    protected Class<BlankFragmentViewModel> getViewModel() {
-        return BlankFragmentViewModel.class;
-    }
+//    @Override
+//    protected Class<BlankFragmentViewModel> getViewModel() {
+//        return BlankFragmentViewModel.class;
+//    }
 
     @Override
     protected void init(View view, Bundle savedInstanceState) {

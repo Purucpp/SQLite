@@ -13,9 +13,12 @@ import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 
-public abstract class BaseFragment<V extends ViewModel, B extends ViewDataBinding> extends Fragment {
+import java.lang.reflect.ParameterizedType;
+
+public abstract class BaseFragment<V extends BaseViewModel, B extends ViewDataBinding> extends Fragment {
 
     protected V mViewModel;
     protected B mBinding;
@@ -24,7 +27,7 @@ public abstract class BaseFragment<V extends ViewModel, B extends ViewDataBindin
     int getLayout();
 
     public abstract int getViewModelId();
-    protected abstract Class<V> getViewModel();
+  //  protected abstract Class<V> getViewModel();
 
     // protected abstract B getViewBinding();
 
@@ -33,11 +36,15 @@ public abstract class BaseFragment<V extends ViewModel, B extends ViewDataBindin
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-      //  mBinding = DataBindingUtil.setContentView(this, getLayout());
-        mViewModel = ViewModelProviders.of(this).get(getViewModel());
-     //   mBinding.setVariable(getViewModelId(),mViewModel);
-       // mBinding.executePendingBindings();
-    //    init(savedInstanceState);
+
+      //  mViewModel = ViewModelProviders.of(this).get(getViewModel());
+
+      //  mViewModel = new ViewModelProvider(this).get((Class<V>) types[types.length - 1]);
+        mViewModel =  new ViewModelProvider(this).
+                get((Class<V>) ((ParameterizedType) this.getClass().getGenericSuperclass()).getActualTypeArguments()[0]);
+
+
+
     }
 
     @Nullable
@@ -54,15 +61,10 @@ public abstract class BaseFragment<V extends ViewModel, B extends ViewDataBindin
         if (getViewModelId() != -1)
             mBinding.setVariable(getViewModelId(), mViewModel);
         mBinding.executePendingBindings();
-      //  getViewModel().init(savedInstanceState);
+        getmViewModel().init(savedInstanceState);
+
         init(view, savedInstanceState);
-//        if (fragmentInteractions != null) {
-//            for (FragmentInteraction fragmentInteraction : fragmentInteractions) {
-//                fragmentInteraction.onFragmentStarted(this);
-//            }
-//
-//        }
-//        getViewModel().onResume();
+
     }
 
 
@@ -81,5 +83,9 @@ public abstract class BaseFragment<V extends ViewModel, B extends ViewDataBindin
      //   Toast.makeText(this, ""+message, Toast.LENGTH_SHORT).show();
     }
 
-
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        getmViewModel().onCleared();
+    }
 }

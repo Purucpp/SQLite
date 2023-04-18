@@ -16,10 +16,10 @@ public class MainActivity2 extends BaseActivity<FirstViewModel, ActivityMain2Bin
     public int getViewModelId() {
         return BR.firstViewModel;
     }
-    @Override
-    protected Class<FirstViewModel> getViewModel() {
-        return FirstViewModel.class;
-    }
+//    @Override
+//    protected Class<FirstViewModel> getViewModel() {
+//        return FirstViewModel.class;
+//    }
 
     @Override
     protected void init(Bundle savedInstanceState) {
@@ -31,6 +31,8 @@ public class MainActivity2 extends BaseActivity<FirstViewModel, ActivityMain2Bin
                 showToast(getViewDataBinding().editText.getText().toString());
             }
         }); */
+
+
 
     }
 

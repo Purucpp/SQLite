@@ -10,9 +10,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
 import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 
-public abstract class BaseActivity<V extends ViewModel, B extends ViewDataBinding> extends AppCompatActivity {
+import java.lang.reflect.ParameterizedType;
+
+public abstract class BaseActivity<V extends BaseViewModel, B extends ViewDataBinding> extends AppCompatActivity {
     protected V mViewModel;
     protected B mBinding;
 
@@ -20,7 +23,7 @@ public abstract class BaseActivity<V extends ViewModel, B extends ViewDataBindin
     int getLayout();
 
     public abstract int getViewModelId();
-    protected abstract Class<V> getViewModel();
+  //  protected abstract Class<V> getViewModel();
 
    // protected abstract B getViewBinding();
 
@@ -30,11 +33,25 @@ public abstract class BaseActivity<V extends ViewModel, B extends ViewDataBindin
         super.onCreate(savedInstanceState);
        // init();
         mBinding = DataBindingUtil.setContentView(this, getLayout());
-        mViewModel = ViewModelProviders.of(this).get(getViewModel());
+
+      //  mViewModel = ViewModelProviders.of(this).get(getViewModel());
+
+        try {
+            mViewModel = new ViewModelProvider(this).
+                    get((Class<V>) ((ParameterizedType) this.getClass().getGenericSuperclass()).getActualTypeArguments()[0]);
+        } catch (Exception e) {
+            mViewModel = new ViewModelProvider(this).
+                    get((Class<V>) ((ParameterizedType) this.getClass().getGenericSuperclass()).getActualTypeArguments()[1]);
+        }
+
         mBinding.setVariable(getViewModelId(),mViewModel);
         mBinding.executePendingBindings();
+        getmViewModel().init(savedInstanceState);
         init(savedInstanceState);
+
+
     }
+
 
 
     public B getViewDataBinding() {
@@ -49,6 +66,13 @@ public abstract class BaseActivity<V extends ViewModel, B extends ViewDataBindin
     public void showToast(String message)
     {
         Toast.makeText(this, ""+message, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        getmViewModel().onCleared();
+
     }
 
 }
