@@ -41,7 +41,8 @@ public class BlankFragment extends BaseFragment<BlankFragmentViewModel, Fragment
         getViewDataBinding().button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               Log.e("clicked","clicked");
+              // Log.e("clicked","clicked");
+                getmViewModel().performLogin();
                 Toast.makeText(getContext(), "clicked", Toast.LENGTH_SHORT).show();
             }
         });

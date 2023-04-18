@@ -88,4 +88,7 @@ public abstract class BaseFragment<V extends BaseViewModel, B extends ViewDataBi
         super.onDestroy();
         getmViewModel().onCleared();
     }
+
+
+
 }
